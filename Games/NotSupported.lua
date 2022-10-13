@@ -49,7 +49,7 @@ local Label = Credits:AddLabel("V0rt3xqa#6221 | Developer")
 
 local Tab = Gui:AddTab("Main")
 local Catergory = Tab:AddCategory("Misc")
-local Button = Category:AddButton("Free Cam - LeftShift + P", function()
+local Button = Catergory:AddButton("Free Cam - LeftShift + P", function()
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/GalaxyScript/main/Scripts/FreeCam.lua", true))()
 	game.StarterGui:SetCore("SendNotification", {
 		Title = "Free Cam";
@@ -112,7 +112,7 @@ local OrionLibrary = loadstring(game:HttpGet('https://raw.githubusercontent.com/
 local Player = game:GetService("Players").LocalPlayer
 OrionLibrary:MakeNotification({
     Name = "Script Loaded",
-    Content = "Thank you for using Galaxy Scripts!\nCurrent game is not supported by Galaxy Scripts.",
+    Content = "Thank you for using Galaxy Scripts!",
     Image = "https://www.roblox.com/asset/?id=4919148038",
     Time = 5
 })
