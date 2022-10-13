@@ -19,7 +19,7 @@ local WhitelistTable = {
 		0,
 	},
 	HeadDeveloper = {
-		0,
+		3872011741,
 		0,
 		0,
 	},
