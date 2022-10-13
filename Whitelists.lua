@@ -47,36 +47,9 @@ local WhitelistTable = {
 	},
 }
 
-Whitelists.Premium = function()
-	return WhitelistTable.Premium	
+function Whitelists:GetWhitelist(Rank)
+	return WhitelistTable[Rank]
 end
 
-Whitelists.Admin = function()
-	return WhitelistTable.Admin	
-end
-
-Whitelists.Staff = function()
-	return WhitelistTable.Staff
-end
-
-Whitelists.Developer = function()
-	return WhitelistTable.Developer	
-end
-
-Whitelists.HeadDeveloper = function()
-	return WhitelistTable.HeadDeveloper
-end
-
-Whitelists.Owner = function()
-	return WhitelistTable.Owner
-end
-
-Whitelists.CoOwner = function()
-	return WhitelistTable.CoOwner	
-end
-
-Whitelists.All = function()
-	return WhitelistTable	
-end
 
 return Whitelists
