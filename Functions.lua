@@ -6,7 +6,7 @@ local function GetURL(scripturl)
 end
 local shalib = loadstring(GetURL("Libraries/sha.lua"))()
 local _hash,hash = pcall(function()
-	local _h = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyGodCheesey/Galaxy-Script-Hub/main/Whitelists.lua"))()
+	local _h = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/GalaxyScript/main/Whitelists.lua"))()
 	return _h
 end)
 
@@ -27,7 +27,7 @@ else
 		tags = hash
 	else
 		_hash,hash = pcall(function()
-			local _h = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyGodCheesey/Galaxy-Script-Hub/main/Whitelists.lua"))()
+			local _h = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/GalaxyScript/main/Whitelists.lua"))()
 			return _h
 		end)	
 		if _hash then
@@ -36,7 +36,7 @@ else
 			repeat
 				task.wait(0.1)
 				_hash,hash = pcall(function()
-					return loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyGodCheesey/Galaxy-Script-Hub/main/Whitelists.lua"))()
+					return loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/GalaxyScript/main/Whitelists.lua"))()
 				end)	
 				if _hash then
 					tags = hash
