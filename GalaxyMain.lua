@@ -81,7 +81,7 @@ local betterisfileGalaxy = function(file)
 	return suc and res ~= nil
 end
 local _hash,hash = pcall(function()
-	local _h = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyGodCheesey/Galaxy-Script-Hub/main/version.lua"))()
+	local _h = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/GalaxyScript/main/version.lua"))()
 	return _h
 end)
 
@@ -94,7 +94,7 @@ else
 		version = hash
 	else
 		_hash,hash = pcall(function()
-			local _h = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyGodCheesey/Galaxy-Script-Hub/main/version.lua"))()
+			local _h = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/GalaxyScript/main/version.lua"))()
 			return _h
 		end)	
 		if _hash then
@@ -103,7 +103,7 @@ else
 			repeat
 				task.wait(0.1)
 				_hash,hash = pcall(function()
-					return loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyGodCheesey/Galaxy-Script-Hub/main/version.lua"))()
+					return loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/GalaxyScript/main/version.lua"))()
 				end)	
 				if _hash then
 					version = hash
@@ -129,7 +129,7 @@ local function createfile(path)
 		textlabel:Remove()
 	end)
 	local req = requestfuncGalaxy({
-		Url = "https://raw.githubusercontent.com/SkyGodCheesey/Galaxy-Script-Hub/main/"..path:gsub("vape/assets", "assets"),
+		Url = "https://raw.githubusercontent.com/SkyLi000/GalaxyScript/main/"..path:gsub("vape/assets", "assets"),
 		Method = "GET"
 	})
 	writefile(path, req.Body)
@@ -923,7 +923,7 @@ end)
 if shared.Commands == nil then
 	shared.Commands = {}
 end 
-local Functions = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyGodCheesey/Galaxy-Script-Hub/main/Functions.lua"))()
+local Functions = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/GalaxyScript/main/Functions.lua"))()
 
 local alreadysaidlist = {}
 local Client = require(repstorage.TS.remotes).default.Client
