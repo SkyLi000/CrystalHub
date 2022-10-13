@@ -3,21 +3,13 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Regul
 local Gui = Library:AddGui({
     Title = {
         "Galaxy Scripts",
-        "Other Games"
+        "Non Supported Games"
     },
     ThemeColor = Color3.fromRGB(31, 80, 255),
     ToggleKey = Enum.KeyCode.RightShift,
 })
 
 local Players = game:GetService("Players")
-
-Players.PlayerAdded:Connect(function(Player)
-    print("New User Joined Game\nUsername: "..Player.Name.."\nDisplay Name: "..Player.Character:WaitForChild("Humanoid").DisplayName.."\nUser Id: "..Player.UserId)
-end)
-
-Players.PlayerRemoving:Connect(function(Player)
-    print("User Left Game\nUsername: "..Player.Name.."\nDisplay Name: "..Player.Character:WaitForChild("Humanoid").DisplayName.."\nUser Id: "..Player.UserId)
-end)
 
 function Teleport(CFrame)
     local Player = Players.LocalPlayer
@@ -48,8 +40,8 @@ local Label = Credits:AddLabel("Sky..#1197 | Head Developer")
 local Label = Credits:AddLabel("V0rt3xqa#6221 | Developer")
 
 local Tab = Gui:AddTab("Main")
-local Catergory = Tab:AddCategory("Misc")
-local Button = Catergory:AddButton("Free Cam - LeftShift + P", function()
+local Category = Tab:AddCategory("Misc")
+local Button = Category:AddButton("Free Cam - LeftShift + P", function()
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/GalaxyScript/main/Scripts/FreeCam.lua", true))()
 	game.StarterGui:SetCore("SendNotification", {
 		Title = "Free Cam";
@@ -58,21 +50,17 @@ local Button = Catergory:AddButton("Free Cam - LeftShift + P", function()
 	})
 end)
 
-local Tab = Gui.AddTab("Players")
-local Catergory = Tab:AddCategory("Player Setting")
-local Slider = Catergory:AddSlider("WalkSpeed", 16, 250, 1, function(Value)
-    game:GetService("Players").LocalPlayer.Humanoid.WalkSpeed = Value
-end)
-local Slider = Catergory:AddSlider("JumpPower", 50, 250, 1, function(Value)
-    game:GetService("Players").LocalPlayer.Humanoid.JumpPower = Value
+local Tab = Gui:AddTab("Players")
+local Category = Tab:AddCategory("Player Setting")
+local Box = Category:AddBox("WalkSpeed", function(Value)
+	game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = Value
 end)
 
-local Tab = Gui:AddTab("Player")
-local Category = Tab:AddCategory("Become Unstoppable")
-local Slider = Category:AddSlider("Walkspeed", 16, 250, 1, function(val)
-	game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = val
+local Box = Category:AddBox("JumpPower", function(Value)
+	game:GetService("Players").LocalPlayer.Character.Humanoid.JumpPower = Value
 end)
-local Button = Catergory:AddButton("Teleport - Control + Click", function()
+
+local Button = Category:AddButton("Teleport - Control + Click", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/GalaxyScript/main/Scripts/ControlClickTp.lua"))()
     game.StarterGui:SetCore("SendNotification", {
 		Title = "Teleport";
@@ -81,8 +69,8 @@ local Button = Catergory:AddButton("Teleport - Control + Click", function()
 	})
 end)
 
-local Toggle = Category:AddToggle("Infinite Jump", false, function(Toggle)
-    getgenv().InfiniteJumpEnabled = Toggle
+local Button = Category:AddButton("Infinite Jump", function()
+	getgenv().InfiniteJumpEnabled = true
 end)
 
 local Button = Category:AddButton("Reset Player", function()
@@ -96,15 +84,15 @@ local DualLabel = Category:AddDualLabel({
     "RightShift"
 })
 
-local Button = Catergory:AddButton("Destroy Gui", function()
+local Button = Category:AddButton("Destroy Gui", function()
     game:GetService("CoreGui")["Galaxy Scripts"]:Destroy()
 end)
 
-local Button = Catergory:AddButton("Dissconnect From Server", function()
+local Button = Category:AddButton("Dissconnect From Server", function()
     game:GetService("Players").LocalPlayer:Kick("Dissconnected From Server")
 end)
 
-local Button = Catergory:AddButton("Shutdown Game - Client", function()
+local Button = Category:AddButton("Shutdown Game - Client", function()
     game:Shutdown()
 end)
 
