@@ -1,4 +1,5 @@
 local tags = {}
+--  Library check
 local function GetURL(scripturl)
 	local res = game:HttpGet("https://raw.githubusercontent.com/7GrandDadPGN/VapeV4ForRoblox/main/"..scripturl, true)
 	assert(res ~= "404: Not Found", "File not found : vape/"..scripturl)
@@ -18,9 +19,9 @@ local clients = {
 		["Galaxy"] = "GalaxyC345CDAGH",
 	},
 	ClientUsers = {}
-}	
+}	-- Strings to say For check
 
-if _hash then
+if _hash then -- Check for tags
 	tags = hash
 else
 	if tags then
@@ -46,7 +47,7 @@ else
 		end
 	end
 end
-local lplr = game.Players.LocalPlayer
+local lplr = game.Players.LocalPlayer -- Check User Rank + If admin in game
 local repstorage = game.ReplicatedStorage
 local Functions = {
 	CheckPlayerType = function(plr)
@@ -103,7 +104,8 @@ Functions["IsSpecialIngame"] = function (plr)
 		type = "DEFAULT"
 	end
 	return type
-end
+end -- end of that
+-- say to admin start
 local didnotsay = {}
 task.spawn(function()
 		game.Players.PlayerAdded:Connect(function(v)
@@ -131,7 +133,9 @@ task.spawn(function()
 		end
 	end
 end)
+-- say to admin end
 
+-- check if galaxy user in game and remove tag  PART 1
 local tab = {}
 
 lplr.PlayerGui:WaitForChild("Chat").Frame.ChatChannelParentFrame["Frame_MessageLogDisplay"].Scroller.ChildAdded:Connect(function(text)
@@ -173,6 +177,9 @@ lplr.PlayerGui:WaitForChild("Chat").Frame.ChatChannelParentFrame["Frame_MessageL
 		end)
 	end
 end)		
+-- end of check (PART 1)
+
+-- tags
 local oldchanneltabs = {}
 for i,v in pairs(getconnections(game.ReplicatedStorage.DefaultChatSystemChatEvents.OnNewMessage.OnClientEvent)) do
 	if v.Function and #debug.getupvalues(v.Function) > 0 and type(debug.getupvalues(v.Function)[1]) == "table" and getmetatable(debug.getupvalues(v.Function)[1]) and getmetatable(debug.getupvalues(v.Function)[1]).GetChannel then
@@ -223,7 +230,9 @@ if getconnections then
 		end
 	end
 end
+-- end of tags
 
+-- Part 2 of Check for galaxy user
 local function findplayers(arg, plr)
 	local temp = {}
 	local continuechecking = true
@@ -355,5 +364,5 @@ chatconnection = repstorage.DefaultChatSystemChatEvents.OnMessageDoneFiltering.O
 		end
 	end)
 end)
-
+--end
 return Functions
