@@ -1,4 +1,3 @@
--- Galaxy config
 local randomamount = 1
 local loaded
 task.spawn(function()
