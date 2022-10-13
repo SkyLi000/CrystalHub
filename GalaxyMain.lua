@@ -25,7 +25,7 @@ local CreateFunction = function(items)
 end
 
 function createwarning(title, content, duration)
-	local frame = GuiLibrary["CreateNotification"](title or "Gravity", content or "(No Content Given)", duration or 5, "assets/WarningNotification.png")
+	local frame = GuiLibrary["CreateNotification"](title or "Galaxy", content or "(No Content Given)", duration or 5, "assets/WarningNotification.png")
 	frame.Frame.Frame.ImageColor3 = Color3.fromRGB(255, 64, 64)
 end
 local r = readfile
