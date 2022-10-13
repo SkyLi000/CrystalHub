@@ -10,8 +10,6 @@
                             |___/                       |_|            
 ]]--
 
-local Whitelists = {}
-
 local WhitelistTable = {
 	Owner = {
 		0,
@@ -47,9 +45,4 @@ local WhitelistTable = {
 	},
 }
 
-function Whitelists:GetWhitelist(Rank)
-	return WhitelistTable[Rank]
-end
-
-
-return Whitelists
+return WhitelistTable
