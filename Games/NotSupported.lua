@@ -85,7 +85,7 @@ local DualLabel = Category:AddDualLabel({
 })
 
 local Button = Category:AddButton("Destroy Gui", function()
-    game:GetService("CoreGui")["Galaxy Scripts Non Supported Games"]:Destroy()
+    game:GetService("CoreGui")["Galaxy Scripts Other Games"]:Destroy()
 end)
 
 local Button = Category:AddButton("Dissconnect From Server", function()
