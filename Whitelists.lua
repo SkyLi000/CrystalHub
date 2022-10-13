@@ -12,7 +12,7 @@
 
 local WhitelistTable = {
 	Owner = {
-		0,
+		3263150565,
 	},
 	CoOwner = {
 		0,
