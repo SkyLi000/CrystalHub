@@ -3,7 +3,7 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Regul
 local Gui = Library:AddGui({
     Title = {
         "Galaxy Scripts",
-        "Non Supported Games"
+        "Other Games"
     },
     ThemeColor = Color3.fromRGB(31, 80, 255),
     ToggleKey = Enum.KeyCode.RightShift,
@@ -85,7 +85,7 @@ local DualLabel = Category:AddDualLabel({
 })
 
 local Button = Category:AddButton("Destroy Gui", function()
-    game:GetService("CoreGui")["Galaxy Scripts"]:Destroy()
+    game:GetService("CoreGui")["Galaxy Scripts Non Supported Games"]:Destroy()
 end)
 
 local Button = Category:AddButton("Dissconnect From Server", function()
