@@ -10,67 +10,69 @@
                             |___/                       |_|            
 ]]--
 
+local Whitelists = {}
+
 local WhitelistTable = {
-	Owner = 0,
+	Owner = {
+		0,
+	},
 	CoOwner = {
 		0,
-		0
-	}
+		0,
+	},
 	HeadDeveloper = {
 		0,
 		0,
-		0
-	}
+		0,
+	},
 	Developer = {
 		0,
 		0,
-		0
-	}
+		0,
+	},
 	Staff = {
 		0,
 		0,
-		0
-	}
+		0,
+	},
 	Admin = {
 		0,
 		0,
-		0
-	}
+		0,
+	},
 	Premium = {
 		0,
 		0,
-		0
-	}
+		0,
+	},
 }
 
-local Whitelists = {}
-
 Whitelists.Premium = function()
-	return WhitelistTable["Premium"]	
+	return WhitelistTable.Premium	
 end
 
 Whitelists.Admin = function()
-	return WhitelistTable["Admin"]	
+	return WhitelistTable.Admin	
 end
 
 Whitelists.Staff = function()
-	return WhitelistTable["Staff"]	
+	return WhitelistTable.Staff
 end
 
 Whitelists.Developer = function()
-	return WhitelistTable["Developer"]	
+	return WhitelistTable.Developer	
 end
 
 Whitelists.HeadDeveloper = function()
-	return WhitelistTable["HeadDeveloper"]	
+	return WhitelistTable.HeadDeveloper
 end
 
 Whitelists.Owner = function()
-	return WhitelistTable["Owner"]	
+	return WhitelistTable.Owner
 end
 
 Whitelists.CoOwner = function()
-	return WhitelistTable["CoOwner"]	
+	return WhitelistTable.CoOwner	
 end
 
 Whitelists.All = function()
