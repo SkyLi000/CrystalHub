@@ -34,7 +34,7 @@ local WhitelistTable = {
 		0,
 	},
 	Admin = {
-		0,
+		3819425061,
 		0,
 		0,
 	},
