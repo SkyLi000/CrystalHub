@@ -29,7 +29,7 @@ local Whitelists = {
         ["1e01ec5f74a840dbb3ee466a952c77727da0210c130b7e5e7d6a391ecf27d1ff993157c50c6244b563a23197bdc614a66db035f358e205f17832c6a4a103bef6"] 
             = Color3.new(0.333333, 1, 1), -- Vortex
         ["f61f227ce13b71c5e86f9e1f92927691b9c0a85ec001965c92f15b344e4d774f88bd1e6920cc4fec660c26991b3a57822edf97f1fca26c43f380cdc37163364d"] 
-            = Color3.new(0.333333, 0.333333, 1), -- VXPE
+            = Color3.fromRGB(151, 32, 212), -- VXPE Color3.new(0.333333, 0.333333, 1),
         ["fee075b943672d60efa69292a42cb984a81a3ce9005f89bc64f3f47fc671eb3d7af49dc2473bb50f1d447067d9cfd8bf9ce186d948949ce814174688d2d02362"]
                 = Color3.fromRGB(151, 32, 212) -- SkyGodCheesey
     },
