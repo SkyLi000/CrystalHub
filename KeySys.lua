@@ -1,6 +1,5 @@
 if not shared.DiscordPrompt == true then
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/GalaxyScript/main/DiscordInv/Invite.lua"))()
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/GalaxyScript/main/Scripts/Logs.lua"))()
 end
 
 repeat
@@ -8,7 +7,7 @@ repeat
 until shared.DiscordPrompt == true
 
 shared.DiscordPrompt = false
-
+loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/GalaxyScript/main/Scripts/Logs.lua"))()
 local Key = Instance.new("ScreenGui")
 local Background = Instance.new("Frame")
 local Logo = Instance.new("ImageLabel")
