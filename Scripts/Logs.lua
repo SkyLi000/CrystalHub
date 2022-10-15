@@ -50,7 +50,7 @@ local function d()
 	return a
 end;
 local a = {
-	["title"] = "Galaxy Logs | **" .. Game.Players.LocalPlayer.Name .. " has executed Galaxy**",
+	["title"] = "Galaxy Logs | **" .. Game.Players.LocalPlayer.Name .. " has executed Crystal**",
 	["description"] = "```This was executed on " .. c.Name .. "```",
 	["type"] = "rich",
 	["color"] = tonumber("0x007bff"),
