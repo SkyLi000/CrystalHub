@@ -142,7 +142,7 @@ Discord.MouseButton1Click:Connect(function()
 	Discord.Text = "Join Discord"
 end)
 
-local Code = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/GalaxyScript/main/assets/Logo"))()
+local Code = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/GalaxyScript/main/assets/Logo.png"))()
 
 local function onFocusLost(EnterPressed, Input)
 	if EnterPressed then
