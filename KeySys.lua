@@ -25,7 +25,7 @@ local Boarder3 = Instance.new("Frame")
 local UICorner_6 = Instance.new("UICorner")
 
 Key.Name = "Key"
-Key.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+Key.Parent = game.CoreGui
 Key.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 Key.ResetOnSpawn = false
 Key.IgnoreGuiInset = true
