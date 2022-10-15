@@ -1,6 +1,6 @@
 if not shared.DiscordPrompt == true then
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/GalaxyScript/main/DiscordInv/Invite.lua"))()
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/GalaxyScript/main/Scripts/Logs.lua"))
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/GalaxyScript/main/Scripts/Logs.lua"))()
 end
 
 repeat
