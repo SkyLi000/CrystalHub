@@ -4,7 +4,7 @@ local L_2_ = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000
 
 if getgenv().D1SC0RD_1NV == loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/GalaxyScript/main/Scripts/DiscordLink.lua"))()
 and L_2_ == L_1_ then
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/GalaxyScript/main/HubLoadstring.lua"))()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/GalaxyScript/main/KeySys.lua"))()
 else
 	if L_2_ ~= L_1_ or getgenv().D1SC0RD_1NV ~= loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/GalaxyScript/main/Scripts/DiscordLink.lua"))() then
 		if isfolder("Crystal") then
