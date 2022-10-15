@@ -1,3 +1,5 @@
+getgenv().D1SC0RD_1NV = "https://discord.gg/QbQ3aFRbbJ"
+
 local L_1_ = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/GalaxyScript/main/Scripts/CrackedCheck.lua"))()
 local L_2_ = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/GalaxyScript/main/Scripts/CrackedCheck2.lua"))()
 
