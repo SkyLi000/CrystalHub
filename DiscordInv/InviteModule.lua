@@ -2,8 +2,8 @@ local TS = game:GetService("TweenService")
 local HS = game:GetService("HttpService")
 local CG = game:GetService("CoreGui")
 
-local UI = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/GalaxyScript/main/DiscordInv/UI.lua"))()
-local Functions = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/GalaxyScript/main/DiscordInv/Functions.lua"))()
+local UI = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/CrystalHub/main/DiscordInv/UI.lua"))()
+local Functions = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/CrystalHub/main/DiscordInv/Functions.lua"))()
 
 local Inviter = { Connections = {} }
 
@@ -122,13 +122,13 @@ Inviter.Prompt = function(options)
 		makefolder("CrystalConfig")
 		if not isfile("CrystalConfig/DiscordConfig.Crystal") then
 			__PROMPT__ = 1
-			writefile("rystalConfig/DiscordConfig.Crystal", "1") -- 1: Prompt, 2: Don't Prompt
+			writefile("CrystalConfig/DiscordConfig.Crystal", "1") -- 1: Prompt, 2: Don't Prompt
 		end
 	else
-		if isfile("rystalConfig/DiscordConfig.Crystal") then
-			__PROMPT__ = tonumber(readfile("rystalConfig/DiscordConfig.Crystal"))
+		if isfile("CrystalConfig/DiscordConfig.Crystal") then
+			__PROMPT__ = tonumber(readfile("CrystalConfig/DiscordConfig.Crystal"))
 		else
-			writefile("rystalConfig/DiscordConfig.Crystal", "1")
+			writefile("CrystalConfig/DiscordConfig.Crystal", "1")
 			local __PROMPT__ = 1
 		end
 	end
