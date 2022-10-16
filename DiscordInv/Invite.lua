@@ -1,5 +1,5 @@
-local inviteModule = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/GalaxyScript/main/DiscordInv/InviteModule.lua"))()
+local inviteModule = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/CrystalHub/main/DiscordInv/InviteModule.lua"))()
 inviteModule.Prompt({
-	name = "Galaxy Script Center",
+	name = "Crystal Hub",
 	invite = "https://discord.gg/QbQ3aFRbbJ",
 })
