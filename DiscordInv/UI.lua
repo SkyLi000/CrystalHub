@@ -8,7 +8,7 @@ local Exploit = {
     Request = (syn and syn.request) or request or http_request,
     GetAsset = getsynasset or getcustomasset
 }
-local Directory = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/GalaxyScript/main/DiscordInv/Directory.lua"))()
+local Directory = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/CrystalHub/main/DiscordInv/Directory.lua"))()
 
 local UI = {
     Color = {
