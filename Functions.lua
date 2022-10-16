@@ -52,7 +52,7 @@ local Functions = {
 
 Functions["IsSpecialIngame"] = function (Player)
 	local Type
-	if plr then
+	if Player then
 		local Hash = Sha.sha512(Player.Name .. Player.UserId)
 		if not (Functions.CheckWhitelist(Hash,Player) == "DEFAULT" or Functions.CheckWhitelist(Hash,Player) == StartString.."User") then
 			Type = Player
