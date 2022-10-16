@@ -1,5 +1,5 @@
 if not shared.DiscordPrompt == true then
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/GalaxyScript/main/DiscordInv/Invite.lua"))()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/CrystalHub/main/DiscordInv/Invite.lua"))()
 end
 
 repeat
@@ -8,14 +8,12 @@ until shared.DiscordPrompt == true
 
 shared.DiscordPrompt = false
 task.spawn(function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/GalaxyScript/main/Functions.lua"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/CrystalHub/main/Functions.lua"))()
 end)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/GalaxyScript/main/Scripts/Logs.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/CrystalHub/main/Scripts/Logs.lua"))()
 local Key = Instance.new("ScreenGui")
 local Background = Instance.new("Frame")
 local Logo = Instance.new("ImageLabel")
-local Discord = Instance.new("TextButton")
-local UICorner = Instance.new("UICorner")
 local KeyBox = Instance.new("TextBox")
 local UICorner_2 = Instance.new("UICorner")
 local Boarder2 = Instance.new("Frame")
@@ -45,23 +43,8 @@ Logo.Name = "Logo"
 Logo.Parent = Background
 Logo.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Logo.BackgroundTransparency = 1.000
-Logo.Size = UDim2.new(1, 0, 0.800000012, 0)
-Logo.Image = "http://www.roblox.com/asset/?id=11249768478"
-
-Discord.Name = "Discord"
-Discord.Parent = Background
-Discord.AnchorPoint = Vector2.new(0.5, 0.5)
-Discord.BackgroundColor3 = Color3.fromRGB(0, 85, 255)
-Discord.Position = UDim2.new(0.5, 0, 0.699999988, 0)
-Discord.Size = UDim2.new(0.899999976, 0, 0.150000006, 0)
-Discord.Font = Enum.Font.Michroma
-Discord.Text = "Join Discord"
-Discord.TextColor3 = Color3.fromRGB(255, 255, 255)
-Discord.TextScaled = true
-Discord.TextSize = 14.000
-Discord.TextWrapped = true
-
-UICorner.Parent = Discord
+Logo.Size = UDim2.new(1, 0, 0.85, 0)
+Logo.Image = "http://www.roblox.com/asset/?id=11289123262"
 
 KeyBox.Name = "KeyBox"
 KeyBox.Parent = Background
@@ -145,18 +128,18 @@ Discord.MouseButton1Click:Connect(function()
 	Discord.Text = "Join Discord"
 end)
 
-local Code = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/GalaxyScript/main/assets/Logo.png"))()
+local Code = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/CrystalHub/main/assets/Logo.png"))()
 
 local function onFocusLost(EnterPressed, Input)
 	if EnterPressed then
 		if KeyBox.Text == Code then
 			Key:Destroy()
 			if pcall(function()
-					game:HttpGet("https://raw.githubusercontent.com/SkyLi000/GalaxyScript/main/Games/" .. game.PlaceId .. ".lua")
+					game:HttpGet("https://raw.githubusercontent.com/SkyLi000/CrystalHub/main/Games/" .. game.PlaceId .. ".lua")
 				end) then
-				loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/GalaxyScript/main/Games/" .. game.PlaceId .. ".lua"))()
+				loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/CrystalHub/main/Games/" .. game.PlaceId .. ".lua"))()
 			else
-				loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/GalaxyScript/main/Games/NotSupported.lua"))()
+				loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/CrystalHub/main/Games/NotSupported.lua"))()
 			end
 		else
 			KeyBox.Text = ""
