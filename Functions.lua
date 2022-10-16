@@ -46,7 +46,6 @@ local Functions = {
 		if plr == LocalPlayer then
 			return "Galaxy User", Color
 		end
-print('oof',plr)
 		return "DEFAULT", Color
 	end
 }
@@ -119,7 +118,7 @@ LocalPlayer.PlayerGui:WaitForChild("Chat").Frame.ChatChannelParentFrame["Frame_M
 				text.Size = UDim2.new(0, 0, 0, 0)
 				text:GetPropertyChangedSignal("Size"):Connect(function()
 					text.Size = UDim2.new(0, 0, 0, 0)
-				end)--GO TO ROBLOX! ROBLXOXXXX ???
+				end)
 			end
 			if client then
 				if textlabel2.Text:find(Clients.ChatStrings2[client]) then
@@ -137,15 +136,10 @@ local function findplayers(arg, plr)
 	local temp = {}
 	local continuechecking = true
 	local Hash = Sha.sha512(plr.Name .. plr.UserId)
-print('doing')
 	if arg == "default" and continuechecking and Functions.CheckWhitelist(Hash,plr) == "Galaxy User" then
-		--print(Functions.CheckWhitelist(Hash) == "Galaxy User")
-		print(Functions.CheckWhitelist(Hash))
-		print("Galaxy User")
 		table.insert(temp, LocalPlayer)
 		continuechecking = false
 	end
-	print(Functions.CheckWhitelist(Hash) == "Galaxy User")
 	if arg == "teamdefault" and continuechecking and Functions.CheckWhitelist(Hash,plr) == "Galaxy User" and plr and LocalPlayer:GetAttribute("Team") ~= plr:GetAttribute("Team") then
 		table.insert(temp, LocalPlayer)
 		continuechecking = false
@@ -261,7 +255,6 @@ local commands = {
 		if person2tp2char and person2tpchar then
 			print("Teleported")
 			person2tpchar.CFrame = person2tp2char.CFrame + Vector3.new(0, 2, 0)
-			--person2tpchar.CFrame = game.Players[person2tp].Character.HumanoidRootPart.CFrame + Vector3.new(0, 2, 0)--same thing
 			person2tpchar = nil
 		else
 			print("Missing either, person2tp2char, person2tpchar")
