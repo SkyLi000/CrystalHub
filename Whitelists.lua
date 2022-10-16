@@ -18,6 +18,8 @@ local Whitelists = {
             = Color3.new(0.666667, 0, 1), -- Just an average joe
         ["dbdc2c73bdce637146323beb6b6c5371707cec3b07a03d3c6703da1f86be7d5cee145d0d9df6d0a5056ee597bd0dd2796620553dbdf65c8b7fd61ce6857f79e6"]
                 = Color3.new(0.666667, 0, 1), -- Pangu
+	["24e27df15e1851b04947d1632b5a002678e96cf02ab02629e2c70681d8fb4b5cd140fb7bda028fc03ac15ad136b0eb652fb5e55df7b7c0c160fd735ef283e539"]
+		= Color3.new(0.666667, 0, 1) -- Not A Hecking Bacon
     },
     Developer = {
         ["5208cdc24c953e1b2b0db014d6693c2c1d59485d0cd1c9aeb8c682c39736cd35d60d9970643387f647a22a900c742e61c5833e2a22064e126a7a0c59fec07c80"] 
