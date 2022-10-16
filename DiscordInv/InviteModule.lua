@@ -117,18 +117,18 @@ end
 
 Inviter.Prompt = function(options)
 	local __PROMPT__ = 1
-	if not isfolder("GSCConfig") then
+	if not isfolder("CrystalConfig") then
 		__PROMPT__ = 1
-		makefolder("GSCConfig")
-		if not isfile("GSCConfig/DiscordConfig.GSC") then
+		makefolder("CrystalConfig")
+		if not isfile("CrystalConfig/DiscordConfig.Crystal") then
 			__PROMPT__ = 1
-			writefile("GSCConfig/DiscordConfig.GSC", "1") -- 1: Prompt, 2: Don't Prompt
+			writefile("rystalConfig/DiscordConfig.Crystal", "1") -- 1: Prompt, 2: Don't Prompt
 		end
 	else
-		if isfile("GSCConfig/DiscordConfig.GSC") then
-			__PROMPT__ = tonumber(readfile("GSCConfig/DiscordConfig.GSC"))
+		if isfile("rystalConfig/DiscordConfig.Crystal") then
+			__PROMPT__ = tonumber(readfile("rystalConfig/DiscordConfig.Crystal"))
 		else
-			writefile("GSCConfig/DiscordConfig.GSC", "1")
+			writefile("rystalConfig/DiscordConfig.Crystal", "1")
 			local __PROMPT__ = 1
 		end
 	end
