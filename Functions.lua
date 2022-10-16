@@ -43,13 +43,16 @@ local Functions = {
 		if Clients.ClientUsers[plr] then
 			return "Galaxy User", Color
 		end
+		if plr == LocalPlayer then
+			return "Galaxy User", Color
+		end
 		return "DEFAULT", Color
 	end
 }
 
 Functions["IsSpecialIngame"] = function (Player)
 	local Type
-	if Player then
+	if plr then
 		local Hash = Sha.sha512(Player.Name .. Player.UserId)
 		if not (Functions.CheckWhitelist(Hash) == "DEFAULT" or Functions.CheckWhitelist(Hash) == "Galaxy User") then
 			Type = Player
