@@ -121,12 +121,12 @@ spawn(function()
 	end
 end)
 
-Discord.MouseButton1Click:Connect(function()
+--[[Discord.MouseButton1Click:Connect(function()
 	setclipboard("https://www.discord.gg/QbQ3aFRbbJ")
 	Discord.Text = "Copied!"
 	wait(2)
 	Discord.Text = "Join Discord"
-end)
+end)--]]
 
 local Code = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/CrystalHub/main/assets/Logo.png"))()
 
