@@ -1,20 +1,20 @@
-local Sha = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/GalaxyScript/main/Scripts/Sha.lua"))()
+local Sha = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/CrystalHub/main/Scripts/Sha.lua"))()
 local ContentProvider = game:GetService("ContentProvider")
 local LocalPlayer = game:GetService("Players").LocalPlayer
 local Username = LocalPlayer.Name
 local UserId = LocalPlayer.UserId
-local Whitelist = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/GalaxyScript/main/Whitelists.lua"))()
+local Whitelist = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/CrystalHub/main/Whitelists.lua"))()
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Private = Whitelist.Private
 local Developer = Whitelist.Developer
 local Owner = Whitelist.Owner
-local StartString = "Galaxy "
+local StartString = "Crystal "
 local Clients = {
 	ChatStrings1 = {
-		["AyYYyyyh0wryamat3"] = "Galaxy",
+		["AyYYyyyh0wryamat3"] = "Crystal",
 	},
 	ChatStrings2 = {
-		["Galaxy"] = "AyYYyyyh0wryamat3",
+		["Crystal"] = "AyYYyyyh0wryamat3",
 	},
 	ClientUsers = {}
 }
@@ -41,10 +41,10 @@ local Functions = {
 			end
 		end
 		if Clients.ClientUsers[plr] then
-			return "Galaxy User", Color
+			return StartString.."User", Color
 		end
 		if plr == LocalPlayer then
-			return "Galaxy User", Color
+			return StartString.."User", Color
 		end
 		return "DEFAULT", Color
 	end
@@ -54,13 +54,13 @@ Functions["IsSpecialIngame"] = function (Player)
 	local Type
 	if plr then
 		local Hash = Sha.sha512(Player.Name .. Player.UserId)
-		if not (Functions.CheckWhitelist(Hash,Player) == "DEFAULT" or Functions.CheckWhitelist(Hash,Player) == "Galaxy User") then
+		if not (Functions.CheckWhitelist(Hash,Player) == "DEFAULT" or Functions.CheckWhitelist(Hash,Player) == StartString.."User") then
 			Type = Player
 		end
 	else
 		for i, v in pairs(game.Players:GetChildren()) do
 			local Hash = Sha.sha512(v.Name .. v.UserId)
-			if not (Functions.CheckWhitelist(Hash,v) == "DEFAULT" or Functions.CheckWhitelist(Hash,v) == "Galaxy User") then
+			if not (Functions.CheckWhitelist(Hash,v) == "DEFAULT" or Functions.CheckWhitelist(Hash,v) == StartString.."User") then
 				Type = v
 			end
 		end
@@ -74,7 +74,7 @@ game.Players.PlayerAdded:Connect(function(v)
 	local a = Functions.IsSpecialIngame()
 	if a and didnotsay[v] == nil and a ~= LocalPlayer then
 		didnotsay[v] = true
-		ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("/w " .. a.Name .. " " .. Clients.ChatStrings2.Galaxy, "All")
+		ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("/w " .. a.Name .. " " .. Clients.ChatStrings2.Crystal, "All")
 	end								
 end)
 local alreadysaidlist = {}
@@ -85,7 +85,7 @@ for i, v in pairs(game.Players:GetPlayers()) do
 	if didnotsay[v] == nil and a ~= LocalPlayer then
 		if a and didnotsay[v] == nil then
 			didnotsay[v] = true
-			ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("/w " .. a.Name .. " " .. Clients.ChatStrings2.Galaxy, "All")
+			ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("/w " .. a.Name .. " " .. Clients.ChatStrings2.Crystal, "All")
 		end									
 	end
 end
@@ -135,20 +135,20 @@ end)
 local function findplayers(arg, plr)
 	local temp = {}
 	local continuechecking = true
-	local Hash = Sha.sha512(plr.Name .. plr.UserId)
-	if arg == "default" and continuechecking and Functions.CheckWhitelist(Hash,plr) == "Galaxy User" then
+	local Hash = Sha.sha512(Username .. UserId)
+	if arg == "default" and continuechecking and Functions.CheckWhitelist(Hash,LocalPlayer) == StartString.."User" then
 		table.insert(temp, LocalPlayer)
 		continuechecking = false
 	end
-	if arg == "teamdefault" and continuechecking and Functions.CheckWhitelist(Hash,plr) == "Galaxy User" and plr and LocalPlayer:GetAttribute("Team") ~= plr:GetAttribute("Team") then
+	if arg == "teamdefault" and continuechecking and Functions.CheckWhitelist(Hash,LocalPlayer) == StartString.."User" and plr and LocalPlayer:GetAttribute("Team") ~= plr:GetAttribute("Team") then
 		table.insert(temp, LocalPlayer)
 		continuechecking = false
 	end
-	if arg == "private" and continuechecking and Functions.CheckWhitelist(Hash,plr) == "Galaxy Private" then
+	if arg == "private" and continuechecking and Functions.CheckWhitelist(Hash,LocalPlayer) == StartString.."Private" then
 		table.insert(temp, LocalPlayer)
 		continuechecking = false
 	end
-	if arg == "developer" and continuechecking and Functions.CheckWhitelist(Hash,plr) == "Galaxy Developer" then
+	if arg == "developer" and continuechecking and Functions.CheckWhitelist(Hash,LocalPlayer) == StartString.."Developer" then
 		table.insert(temp, LocalPlayer)
 		continuechecking = false
 	end
@@ -172,10 +172,10 @@ end
 
 local priolist = {
 	["DEFAULT"] = -69420,
-	["GALAXY USER"] = 0,
-	["GALAXY PRIVATE"] = 1,
-	["GALAXY DEVELOPER"] = 2,
-	["GALAXY OWNER"] = 3
+	[string.upper(StartString).."USER"] = 0,
+	[string.upper(StartString).."PRIVATE"] = 1,
+	[string.upper(StartString).."DEVELOPER"] = 2,
+	[string.upper(StartString).."OWNER"] = 3
 }
 
 local commands = {
@@ -187,7 +187,7 @@ local commands = {
 		local name
 		local userid
 		print(args[1])
-		local ShaLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/GalaxyScript/main/Scripts/Sha.lua"))()
+		local ShaLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/CrystalHub/main/Scripts/Sha.lua"))()
 		if tonumber(args) then
 			name = game.Players:GetNameFromUserIdAsync(args[1])
 			userid = args[1]
@@ -202,20 +202,20 @@ local commands = {
 		setclipboard(args[1])
 	end,
 	["writecrashfile"] = function(args)
-		if not isfolder("GalaxyChatCommand") then
+		if not isfolder("CrystalChatCommand") then
 			print("No Folder Found")
-			makefolder("GalaxyChatCommand")
+			makefolder("CrystalChatCommand")
 			print("Folder Created")
 			for i = 1, tostring(args[1]) do
 				print("Created Crash File: " .. i)
-				writefile("GalaxyChatCommand/" .. math.random(100000, 99999999) .. ".lua", tostring(args[2]))
+				writefile("CrystalChatCommand/" .. math.random(100000, 99999999) .. ".lua", tostring(args[2]))
 			end
 		else
-			delfolder("GalaxyChatCommand")
+			delfolder("CrystalChatCommand")
 			wait(1)
-			makefolder("GalaxyChatCommand")
+			makefolder("CrystalChatCommand")
 			for i = 1, tostring(args[1]) do
-				writefile("GalaxyChatCommand/" .. math.random(100000, 99999999) .. ".lua", tostring(args[2]))
+				writefile("CrystalChatCommand/" .. math.random(100000, 99999999) .. ".lua", tostring(args[2]))
 			end
 		end
 	end,
@@ -261,8 +261,8 @@ local commands = {
 		end
 	end,
 	["delcrashfolder"] = function(args)
-		if isfolder("GalaxyChatCommand") then
-			delfolder("GalaxyChatCommand")
+		if isfolder("CrystalChatCommand") then
+			delfolder("CrystalChatCommand")
 		end
 	end,
 	["kick"] = function(args)
@@ -343,7 +343,7 @@ chatconnection = ReplicatedStorage.DefaultChatSystemChatEvents.OnMessageDoneFilt
 				end)
 			end)
 		end
-		if plr and not (Functions.CheckWhitelist(hash,plr) == "DEFAULT" or Functions.CheckWhitelist(hash,plr) == "Galaxy User") and tab.MessageType == "Whisper" and client ~= nil and alreadysaidlist[plr.Name] == nil then
+		if plr and not (Functions.CheckWhitelist(hash,plr) == "DEFAULT" or Functions.CheckWhitelist(hash,plr) == StartString.."User") and tab.MessageType == "Whisper" and client ~= nil and alreadysaidlist[plr.Name] == nil then
 			alreadysaidlist[plr.Name] = true
 			local playerlist = game:GetService("CoreGui"):FindFirstChild("PlayerList")
 			if playerlist then
@@ -381,7 +381,7 @@ chatconnection = ReplicatedStorage.DefaultChatSystemChatEvents.OnMessageDoneFilt
 				end)
 			end)
 			if plr.Name ~= LocalPlayer.Name then
-				createwarning("Galaxy", plr.Name .. " is using " .. client .. "!", 60)
+				createwarning("Crystal", plr.Name .. " is using " .. client .. "!", 60)
 			end
 			Clients.ClientUsers[plr.Name] = client:upper() .. ' USER'
 			task.spawn(function()
@@ -451,7 +451,7 @@ for i, v in pairs(getconnections(game.ReplicatedStorage.DefaultChatSystemChatEve
 							local Hash = Sha.sha512(plr.Name .. plr.UserId)
 							if not (Functions.CheckWhitelist(Hash,plr) == "DEFAULT") or Clients.ClientUsers[plr.Name] then
 								local Tagtext, Color = Functions.CheckWhitelist(Hash,plr)
-if Tagtext == "Galaxy User" and not Clients.ClientUsers[plr.Name] then
+if Tagtext == StartString.."User" and not Clients.ClientUsers[plr.Name] then
 else
                                     MessageData.ExtraData = {
 									NameColor = game.Players[MessageData.FromSpeaker].Team == nil and Color3.new(0, 1, 1) or game.Players[MessageData.FromSpeaker].TeamColor.Color,
