@@ -2,7 +2,7 @@ a = pcall(function()
       if shared.GalaxyLoaded then
          error("Already loaded!")
          else
-          loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/GalaxyScript/main/GalaxyMain.lua"))()
+          loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/GalaxyScript/main/Crystal.lua"))()
        end
             print(shared.GalaxyLoaded)
 end)
