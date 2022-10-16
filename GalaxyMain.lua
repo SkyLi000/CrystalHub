@@ -25,7 +25,7 @@ local CreateFunction = function(items)
 end
 
 function createwarning(title, content, duration)
-	local frame = GuiLibrary["CreateNotification"](title or "Galaxy", content or "(No Content Given)", duration or 5, "assets/WarningNotification.png")
+	local frame = GuiLibrary["CreateNotification"](title or "Crystal", content or "(No Content Given)", duration or 5, "assets/WarningNotification.png")
 	frame.Frame.Frame.ImageColor3 = Color3.fromRGB(255, 64, 64)
 end
 local r = readfile
@@ -41,7 +41,7 @@ local getconnections
 getconnections = g or false
 local check = (readfile and writefile and getconnections and isfolder and makefolder)
 if check == false then
-	createwarning("Failed to load","Something failed to Load, and we cannot load galaxy!",10)
+	createwarning("Failed to load","Something failed to Load, and we cannot load Crystal!",10)
 	warn(readfile and writefile and getconnections and isfolder and makefolder)
 	error()
 end
@@ -58,9 +58,9 @@ local images = {
 	"WindowBlur","WorldIcon"
 }
 
-local cachedassetsGalaxy = {}
-local getassetGalaxy = getsynasset or getcustomasset or function(location) return "rbxasset://"..location end
-local requestfuncGalaxy = syn and syn.request or http and http.request or http_request or fluxus and fluxus.request or request or function(tab)
+local cachedassetsCrystal = {}
+local getassetCrystal = getsynasset or getcustomasset or function(location) return "rbxasset://"..location end
+local requestfuncCrystal = syn and syn.request or http and http.request or http_request or fluxus and fluxus.request or request or function(tab)
 	if tab.Method == "GET" then
 		return {
 			Body = game:HttpGet(tab.Url, true),
@@ -75,12 +75,12 @@ local requestfuncGalaxy = syn and syn.request or http and http.request or http_r
 		}
 	end
 end 
-local betterisfileGalaxy = function(file)
+local betterisfileCrystal = function(file)
 	local suc, res = pcall(function() return readfile(file) end)
 	return suc and res ~= nil
 end
 local _hash,hash = pcall(function()
-	local _h = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/GalaxyScript/main/version.lua"))()
+	local _h = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/CrystalHub/main/version.lua"))()
 	return _h
 end)
 
@@ -93,7 +93,7 @@ else
 		version = hash
 	else
 		_hash,hash = pcall(function()
-			local _h = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/GalaxyScript/main/version.lua"))()
+			local _h = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/CrystalHub/main/version.lua"))()
 			return _h
 		end)	
 		if _hash then
@@ -102,7 +102,7 @@ else
 			repeat
 				task.wait(0.1)
 				_hash,hash = pcall(function()
-					return loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/GalaxyScript/main/version.lua"))()
+					return loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/CrystalHub/main/version.lua"))()
 				end)	
 				if _hash then
 					version = hash
@@ -116,7 +116,7 @@ local function createfile(path)
 	task.spawn(function()
 		local textlabel = Instance.new("TextLabel")
 		textlabel.Size = UDim2.new(1, 0, 0, 36)
-		textlabel.Text = "Downloading "..path.." (from Galaxy config)"
+		textlabel.Text = "Downloading "..path.." (from Crystal config)"
 		textlabel.BackgroundTransparency = 1
 		textlabel.TextStrokeTransparency = 0
 		textlabel.TextSize = 30
@@ -124,18 +124,18 @@ local function createfile(path)
 		textlabel.TextColor3 = Color3.new(1, 1, 1)
 		textlabel.Position = UDim2.new(0, 0, 0, -36)
 		textlabel.Parent = shared.GuiLibrary["MainGui"]
-		repeat task.wait() until betterisfileGalaxy(path)
+		repeat task.wait() until betterisfileCrystal(path)
 		textlabel:Remove()
 	end)
-	local req = requestfuncGalaxy({
-		Url = "https://raw.githubusercontent.com/SkyLi000/GalaxyScript/main/"..path:gsub("vape/assets", "assets"),
+	local req = requestfuncCrystal({
+		Url = "https://raw.githubusercontent.com/SkyLi000/CrystalHub/main/"..path:gsub("vape/assets", "assets"),
 		Method = "GET"
 	})
 	writefile(path, req.Body)
 end
 
 local function downloadnewfile(path)
-	if betterisfileGalaxy(path) then
+	if betterisfileCrystal(path) then
 		createfile(path)
 	else
 		if not isfolder("vape") then
@@ -146,10 +146,10 @@ local function downloadnewfile(path)
 		end
 		createfile(path)
 	end
-	if cachedassetsGalaxy[path] == nil then
-		cachedassetsGalaxy[path] = getassetGalaxy(path) 
+	if cachedassetsCrystal[path] == nil then
+		cachedassetsCrystal[path] = getassetCrystal(path) 
 	end
-	return cachedassetsGalaxy[path]
+	return cachedassetsCrystal[path]
 end
 
 local function checkifupdated(ver)
@@ -166,11 +166,11 @@ local function checkifupdated(ver)
 
 	end
 
-	writefile("Galaxy/currentversion.lua",version)
+	writefile("CrystalVxpe/currentversion.lua",version)
 end
 
 local function checkiffile(filename)
-	if not betterisfileGalaxy(filename) then
+	if not betterisfileCrystal(filename) then
 		downloadnewfile(filename)
 		return true
 	else
@@ -178,21 +178,21 @@ local function checkiffile(filename)
 	end
 end
 
-if not isfolder("Galaxy") then
-	makefolder("Galaxy")
+if not isfolder("CrystalVxpe") then
+	makefolder("CrystalVxpe")
 end
 
 local fileversion
 pcall(function()
-	fileversion = readfile("Galaxy/currentversion.lua")
+	fileversion = readfile("CrystalVxpe/currentversion.lua")
 end)
 checkifupdated(fileversion)
 for i,v in pairs(images) do
 	checkiffile("vape/assets/"..v..".png")
 end
 
-if shared.GalaxyLoaded then
-	error("Galaxy already loaded")
+if shared.CrystalLoaded then
+	error("Crystal already loaded")
 end
 
 local repstorage = game:GetService("ReplicatedStorage")
@@ -570,7 +570,7 @@ local KnitClient = debug.getupvalue(require(game:GetService("Players").LocalPlay
 
 local function GetURL(scripturl)
 	if shared.VapeDeveloper then
-		assert(betterisfileGalaxy("vape/"..scripturl), "File not found : vape/"..scripturl)
+		assert(betterisfileCrystal("vape/"..scripturl), "File not found : vape/"..scripturl)
 		return readfile("vape/"..scripturl)
 	else
 		local res = game:HttpGet("https://raw.githubusercontent.com/7GrandDadPGN/VapeV4ForRoblox/main/"..scripturl, true)
@@ -582,9 +582,9 @@ local shalib = loadstring(GetURL("Libraries/sha.lua"))()
 
 local a=syn and syn.queue_on_teleport or queue_on_teleport or fluxus and fluxus.queue_on_teleport or function()end
 game:GetService("Players").LocalPlayer.OnTeleport:Connect(function(b)
-	if b==Enum.TeleportState.Started then a("pcall(function() shared.GalaxyLoaded = false end)") end end)
+	if b==Enum.TeleportState.Started then a("pcall(function() shared.CrystalLoaded = false end)") end end)
 
-shared.GalaxyLoaded = true
+shared.CrystalLoaded = true
 				
 local cachedassets = {}
 local requestfunc = syn and syn.request or http and http.request or http_request or fluxus and fluxus.request or request or function(tab)
@@ -922,7 +922,7 @@ end)
 if shared.Commands == nil then
 	shared.Commands = {}
 end 
-local Functions = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/GalaxyScript/main/Functions.lua"))()
+local Functions = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/CrystalHub/main/Functions.lua"))()
 
 local alreadysaidlist = {}
 local Client = require(repstorage.TS.remotes).default.Client
