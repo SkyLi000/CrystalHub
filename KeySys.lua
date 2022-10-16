@@ -106,7 +106,7 @@ spawn(function()
 		Key.Name = math.random(10000,999999)
 		Background.Name = math.random(10000,999999)
 		Logo.Name = math.random(10000,999999)
-		Discord.Name = math.random(10000,999999)
+		--Discord.Name = math.random(10000,999999)
 		UICorner.Name = math.random(10000,999999)
 		KeyBox.Name = math.random(10000,999999)
 		Boarder1.Name = math.random(10000,999999)
@@ -143,9 +143,9 @@ local function onFocusLost(EnterPressed, Input)
 			end
 		else
 			KeyBox.Text = ""
-			Discord.Text = "Wrong Key!"
+			KeyBox.Text = "Wrong Key!"
 			wait(3)
-			Discord.Text = "Join Discord"
+			KeyBox.Text = "Join Discord"
 		end
 	end
 end
