@@ -1,11 +1,11 @@
-local L_1_ = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/GalaxyScript/main/Scripts/CrackedCheck.lua"))()
-local L_2_ = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/GalaxyScript/main/Scripts/CrackedCheck2.lua"))()
+local L_1_ = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/CrystalHub/main/Scripts/CrackedCheck.lua"))()
+local L_2_ = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/CrystalHub/main/Scripts/CrackedCheck2.lua"))()
 
-if getgenv().D1SC0RD_1NV == loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/GalaxyScript/main/Scripts/DiscordLink.lua"))()
+if getgenv().D1SC0RD_1NV == loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/CrystalHub/main/Scripts/DiscordLink.lua"))()
 and L_2_ == L_1_ then
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/GalaxyScript/main/KeySys.lua"))()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/CrystalHub/main/KeySys.lua"))()
 else
-	if L_2_ ~= L_1_ or getgenv().D1SC0RD_1NV ~= loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/GalaxyScript/main/Scripts/DiscordLink.lua"))() then
+	if L_2_ ~= L_1_ or getgenv().D1SC0RD_1NV ~= loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/CrystalHub/main/Scripts/DiscordLink.lua"))() then
 		if isfolder("Crystal") then
 			if isfile("Crystal/Settings2.lua") then
 				if readfile("Crystal/Settings2.lua") == "2" then
