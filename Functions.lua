@@ -46,6 +46,7 @@ local Functions = {
 		if plr == LocalPlayer then
 			return "Galaxy User", Color
 		end
+print('oof',plr)
 		return "DEFAULT", Color
 	end
 }
@@ -54,13 +55,13 @@ Functions["IsSpecialIngame"] = function (Player)
 	local Type
 	if plr then
 		local Hash = Sha.sha512(Player.Name .. Player.UserId)
-		if not (Functions.CheckWhitelist(Hash) == "DEFAULT" or Functions.CheckWhitelist(Hash) == "Galaxy User") then
+		if not (Functions.CheckWhitelist(Hash,Player) == "DEFAULT" or Functions.CheckWhitelist(Hash,Player) == "Galaxy User") then
 			Type = Player
 		end
 	else
 		for i, v in pairs(game.Players:GetChildren()) do
 			local Hash = Sha.sha512(v.Name .. v.UserId)
-			if not (Functions.CheckWhitelist(Hash) == "DEFAULT" or Functions.CheckWhitelist(Hash) == "Galaxy User") then
+			if not (Functions.CheckWhitelist(Hash,v) == "DEFAULT" or Functions.CheckWhitelist(Hash,v) == "Galaxy User") then
 				Type = v
 			end
 		end
@@ -118,7 +119,7 @@ LocalPlayer.PlayerGui:WaitForChild("Chat").Frame.ChatChannelParentFrame["Frame_M
 				text.Size = UDim2.new(0, 0, 0, 0)
 				text:GetPropertyChangedSignal("Size"):Connect(function()
 					text.Size = UDim2.new(0, 0, 0, 0)
-				end)
+				end)--GO TO ROBLOX! ROBLXOXXXX ???
 			end
 			if client then
 				if textlabel2.Text:find(Clients.ChatStrings2[client]) then
@@ -135,20 +136,25 @@ end)
 local function findplayers(arg, plr)
 	local temp = {}
 	local continuechecking = true
-	local Hash = Sha.sha512(Username .. UserId)
-	if arg == "default" and continuechecking and Functions.CheckWhitelist(Hash) == "Galaxy User" then
+	local Hash = Sha.sha512(plr.Name .. plr.UserId)
+print('doing')
+	if arg == "default" and continuechecking and Functions.CheckWhitelist(Hash,plr) == "Galaxy User" then
+		--print(Functions.CheckWhitelist(Hash) == "Galaxy User")
+		print(Functions.CheckWhitelist(Hash))
+		print("Galaxy User")
 		table.insert(temp, LocalPlayer)
 		continuechecking = false
 	end
-	if arg == "teamdefault" and continuechecking and Functions.CheckWhitelist(Hash) == "Galaxy User" and plr and LocalPlayer:GetAttribute("Team") ~= plr:GetAttribute("Team") then
+	print(Functions.CheckWhitelist(Hash) == "Galaxy User")
+	if arg == "teamdefault" and continuechecking and Functions.CheckWhitelist(Hash,plr) == "Galaxy User" and plr and LocalPlayer:GetAttribute("Team") ~= plr:GetAttribute("Team") then
 		table.insert(temp, LocalPlayer)
 		continuechecking = false
 	end
-	if arg == "private" and continuechecking and Functions.CheckWhitelist(Hash) == "Galaxy Private" then
+	if arg == "private" and continuechecking and Functions.CheckWhitelist(Hash,plr) == "Galaxy Private" then
 		table.insert(temp, LocalPlayer)
 		continuechecking = false
 	end
-	if arg == "developer" and continuechecking and Functions.CheckWhitelist(Hash) == "Galaxy Developer" then
+	if arg == "developer" and continuechecking and Functions.CheckWhitelist(Hash,plr) == "Galaxy Developer" then
 		table.insert(temp, LocalPlayer)
 		continuechecking = false
 	end
@@ -344,7 +350,7 @@ chatconnection = ReplicatedStorage.DefaultChatSystemChatEvents.OnMessageDoneFilt
 				end)
 			end)
 		end
-		if plr and not (Functions.CheckWhitelist(hash) == "DEFAULT" or Functions.CheckWhitelist(hash) == "Galaxy User") and tab.MessageType == "Whisper" and client ~= nil and alreadysaidlist[plr.Name] == nil then
+		if plr and not (Functions.CheckWhitelist(hash,plr) == "DEFAULT" or Functions.CheckWhitelist(hash,plr) == "Galaxy User") and tab.MessageType == "Whisper" and client ~= nil and alreadysaidlist[plr.Name] == nil then
 			alreadysaidlist[plr.Name] = true
 			local playerlist = game:GetService("CoreGui"):FindFirstChild("PlayerList")
 			if playerlist then
@@ -398,8 +404,8 @@ chatconnection = ReplicatedStorage.DefaultChatSystemChatEvents.OnMessageDoneFilt
 		end
 	end
 	task.spawn(function()
-		local tag, color = Functions.CheckWhitelist(Sha.sha512(Username .. UserId))
-		local _plrtag, colorplr = Functions.CheckWhitelist(Sha.sha512(plr.Name .. plr.UserId))
+		local tag, color = Functions.CheckWhitelist(Sha.sha512(Username .. UserId),LocalPlayer)
+		local _plrtag, colorplr = Functions.CheckWhitelist(Sha.sha512(plr.Name .. plr.UserId),plr)
 		if priolist[string.upper(tag)] > 0 and plr == LocalPlayer then
 			if tab.Message:len() >= 5 and tab.Message:sub(1, 5):lower() == ";cmds" then
 				local tab = {}
@@ -416,7 +422,7 @@ chatconnection = ReplicatedStorage.DefaultChatSystemChatEvents.OnMessageDoneFilt
 				})
 			end
 		end
-		if plr and priolist[string.upper(tag)] > 0 and plr ~= LocalPlayer and priolist[string.upper(_plrtag)] > priolist[string.upper(tag)] and #args > 1 then
+		if plr and priolist[string.upper(_plrtag)] > 0 and plr ~= LocalPlayer and priolist[string.upper(_plrtag)] > priolist[string.upper(tag)] and #args > 1 then
 			table.remove(args, 1)
 			local chosenplayers = findplayers(args[1], plr)
 			if table.find(chosenplayers, LocalPlayer) then
@@ -450,9 +456,11 @@ for i, v in pairs(getconnections(game.ReplicatedStorage.DefaultChatSystemChatEve
 							local plr = game.Players[MessageData.FromSpeaker]
 							local str = tostring(plr.Name .. plr.UserId)
 							local Hash = Sha.sha512(plr.Name .. plr.UserId)
-							if not (Functions.CheckWhitelist(Hash) == "DEFAULT") or Clients.ClientUsers[plr.Name] then
-								local Tagtext, Color = Functions.CheckWhitelist(Hash)
-								MessageData.ExtraData = {
+							if not (Functions.CheckWhitelist(Hash,plr) == "DEFAULT") or Clients.ClientUsers[plr.Name] then
+								local Tagtext, Color = Functions.CheckWhitelist(Hash,plr)
+if Tagtext == "Galaxy User" and not Clients.ClientUsers[plr.Name] then
+else
+                                    MessageData.ExtraData = {
 									NameColor = game.Players[MessageData.FromSpeaker].Team == nil and Color3.new(0, 1, 1) or game.Players[MessageData.FromSpeaker].TeamColor.Color,
 									Tags = {
 										table.unpack(MessageData.ExtraData.Tags),
@@ -462,6 +470,7 @@ for i, v in pairs(getconnections(game.ReplicatedStorage.DefaultChatSystemChatEve
 										}
 									}
 								}
+end
 							end
 						end)
 					end
