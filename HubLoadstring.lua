@@ -1,6 +1,7 @@
 local L_1_ = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/CrystalHub/main/Scripts/CrackedCheck.lua"))()
 local L_2_ = loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/CrystalHub/main/Scripts/CrackedCheck2.lua"))()
-
+local L_x_ = "1"
+getgenv().Code = L_x_
 if getgenv().D1SC0RD_1NV == loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/CrystalHub/main/Scripts/DiscordLink.lua"))()
 and L_2_ == L_1_ then
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyLi000/CrystalHub/main/KeySys.lua"))()
