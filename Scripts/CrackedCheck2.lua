@@ -9,11 +9,10 @@ x["insert"] = function (x,c,a)
 end
 x.insert(x,nil,18281737284919)
 x.insert(x,nil,38319182737827)
-local code = (18281737284919 and x[18281737284919] and getgenv().Code == "1" 
-or 38319182737827 and x[38319182737827])
+local code = (x[18281737284919] and getgenv().Code == "1" and 18281737284919 
+or x[38319182737827] and 38319182737827)
 
-print(code)
-return 18281737284919
+return code
 
 --[[
 18281737284919 | Not Cracked
