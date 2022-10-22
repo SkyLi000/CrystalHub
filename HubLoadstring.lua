@@ -13,6 +13,8 @@ else
 				if readfile("Crystal/Settings2.lua") == "2" then
 					game:GetService("Players").LocalPlayer:Kick("Error while loading script!")
 				end
+				else
+				writefile("Crystal/Settings2.lua","2")
 			end
 		else
 			if not isfolder("Crystal") then
