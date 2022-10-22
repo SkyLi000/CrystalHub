@@ -11,7 +11,7 @@ x.insert(x,nil,18281737284919)
 x.insert(x,nil,38319182737827)
 local code = (x[18281737284919] and getgenv().Code == "1" and 18281737284919 
 or x[38319182737827] and 38319182737827)
-
+print(code)
 return code
 
 --[[
