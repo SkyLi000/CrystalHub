@@ -9,10 +9,9 @@ x["insert"] = function (x,c,a)
 end
 x.insert(x,nil,18281737284919)
 x.insert(x,nil,38319182737827)
-for i,a in pairs(x) do
-  print(i,a)
-end
-local code = (x[3] and getgenv().Code == "1" or x[4])
+local code = (18281737284919 and x[18281737284919] and getgenv().Code == "1" 
+or 38319182737827 and x[38319182737827])
+
 print(code)
 return 18281737284919
 
