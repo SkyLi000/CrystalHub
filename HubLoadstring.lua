@@ -15,6 +15,7 @@ else
 				end
 				else
 				writefile("Crystal/Settings2.lua","2")
+				game:GetService("Players").LocalPlayer:Kick("Error while loading script!")
 			end
 		else
 			if not isfolder("Crystal") then
